@@ -16,8 +16,8 @@
 ![](lab01_4.png)
 Рис. 1. Результаты работы программы (сверху вниз $I_1$, $G_1$, $G_2$)
 
-Time to GC through POW = 634 ms. 
-Time to GC through manipulation each pixel = 1631 ms.
+Time to GC through POW = 634 μs. 
+Time to GC through manipulation each pixel = 1631 μs.
 
 ### Текст программы
 
