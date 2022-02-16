@@ -50,15 +50,15 @@ int main() {
 	const cv::Rect2d rc(0,0,768,60);
 	cv::Rect2d move_rc(0, 0, 768, 60);
 
-	// copy rectangle matrix fro img to result
+	// copy rectangle matrix from img to result
 	img(rc).copyTo(result(move_rc));
 	cv::rectangle(result, move_rc, { 100 }, 1);
 	move_rc.y += rc.height;
 	second_img(rc).copyTo(result(move_rc));
-	cv::rectangle(result, move_rc, { 250 }, 1);
+	cv::rectangle(result, move_rc, { 100 }, 1);
 	move_rc.y += rc.height;
 	third_img(rc).copyTo(result(move_rc));
-	cv::rectangle(result, move_rc, { 150 }, 1);
+	cv::rectangle(result, move_rc, { 100 }, 1);
 
   //cv::imwrite("lab01.png", img);
   //cv::imshow("lab01.png", img);
