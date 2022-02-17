@@ -70,7 +70,7 @@ int main() {
   //cv::imshow("lab01_3.png", third_img);
 
   
-  std::cout << "Time to GC through POW = " << time_res1.count() << "microseconds"<<  '\n';
+  std::cout << "Time to GC through POW = " << time_res1.count() << " microseconds"<<  '\n';
   std::cout << "Time to GC through manipulation each pixel = " << time_res2.count() << " microseconds " << '\n';
 
   cv::imwrite("lab01_4.png", result);
