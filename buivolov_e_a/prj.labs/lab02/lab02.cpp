@@ -5,7 +5,7 @@ int main() {
 
 	cv::Mat img = cv::imread("D:/SandBox/buivolov_e_a/data/cross_0256x0256.png",1);
 	cv::imwrite("badquality.jpg",img, {cv::ImwriteFlags::IMWRITE_JPEG_QUALITY,25});
-
+	cv::imshow("badquality.jpg", img);
 	cv::Mat img_25q = cv::imread("D:/SandBox/buivolov_e_a/build.vs.2019/prj.labs/lab02/badquality.jpg");
 	//cv::imshow("badquality.jpg",img_25q);
 
@@ -65,11 +65,10 @@ int main() {
 	cv::Mat temp_img;
 	img.copyTo(temp_img);
 	cv::cvtColor(temp_img,temp_img,cv::COLOR_BGR2GRAY);
-
+	std::cout << blue_channel.channels();
 	cv::Mat temp_img_jpg;
 	img_25q.copyTo(temp_img_jpg);
 	cv::cvtColor(temp_img_jpg, temp_img_jpg, cv::COLOR_BGR2GRAY);
-
 	cv::calcHist(&blue_channel_jpg, 1, 0, cv::Mat(), _b_b_hist_jpg, 1, &hist_size, hist_range, uniform, accumulate);
 	cv::calcHist(&green_channel_jpg, 1, 0, cv::Mat(), _b_g_hist_jpg, 1, &hist_size, hist_range, uniform, accumulate);
 	cv::calcHist(&red_channel_jpg, 1, 0, cv::Mat(), _b_r_hist_jpg, 1, &hist_size, hist_range, uniform, accumulate);
@@ -170,7 +169,7 @@ int main() {
 	rect.x -= rect.width;
 	hist_g_img.copyTo(mosaic_img(rect));
 	cv::imwrite("mosaic_hist.png", mosaic_img);
-	//cv::imshow("mosaic_hist.png",mosaic_img);
+	cv::imshow("mosaic_hist.png",mosaic_img);
 
 
 
