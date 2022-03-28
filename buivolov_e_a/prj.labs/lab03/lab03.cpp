@@ -37,7 +37,9 @@ int main() {
 			gradient.at<uint8_t>(j,i) = i/3;
 		}
 	}
+	cv::imshow("tst1.png", gradient);
 	changeBrightness(gradient, res);
+	cv::imshow("tst.png",res);
 
 	cv::Mat graph(testImg.rows,testImg.cols ,CV_8UC1);
 	graph.setTo(255);
@@ -45,9 +47,23 @@ int main() {
 	for (int i = 0; i < graph.cols; ++i) {
 		graph.at<uint8_t>(255 - setBrightness(i), i) = 0;
 	}
+	cv::Rect2d rc2(2, 0, graph.rows, graph.cols);
+	cv::Mat graph1(graph.rows+3,graph.cols+3, CV_8UC1);
+	graph1 = 255;
+	graph.copyTo(graph1(rc2));
+	for (int i = 0; i < graph1.cols; i++) {
+		graph1.at<uint8_t>(graph1.rows - 2,i) = 0;
+		graph1.at<uint8_t>(graph1.rows - 3, i) = 0;
+	}
+	for (int i = 0; i < graph1.rows; i++) {
+		graph1.at<uint8_t>(i, 1) = 0;
+		graph1.at<uint8_t>(i, 2) = 0;
+	}
+
+	graph = graph1;
 	cv::resize(graph, graph, cv::Size(512, 512), 0, 0, cv::InterpolationFlags::INTER_CUBIC);
 	cv::imwrite("graph.png", graph);
-	//cv::imshow("graph.png", graph);
+	cv::imshow("graph.png", graph);
 	
 	cv::Mat testImgGray(testImg.rows, testImg.cols, testImg.type());
 	cv::cvtColor(testImg, testImgGray, cv::COLOR_BGR2GRAY);
